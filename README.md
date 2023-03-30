@@ -1,1 +1,5 @@
-Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
+<h1>WrestleSearch</h1>
+
+<p>
+  A web app made for fun, so that people can search wrestlers, see their title reign as well as their mos memorable moments, as well as create conversations about these freaks of nature.
+</p>
