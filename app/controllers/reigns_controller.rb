@@ -1,0 +1,2 @@
+class ReignsController < ApplicationController
+end

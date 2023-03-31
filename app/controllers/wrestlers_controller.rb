@@ -1,0 +1,2 @@
+class WrestlersController < ApplicationController
+end
