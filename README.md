@@ -2,10 +2,9 @@
 
 <!-- ![Image]([http://url/a.png](https://media4.giphy.com/media/kRWFIgO75okHm/giphy.gif?cid=ecf05e47dplry3wazonjzegm11h8n0ldf5x8zwth2ha5cmez&rid=giphy.gif&ct=g)) -->
 
-<!-- <img src="https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif" width="40" height="40" /> -->
+<img src="https://media4.giphy.com/media/kRWFIgO75okHm/giphy.gif" align="center" />
 
-
-![Alt Text](https://media4.giphy.com/media/kRWFIgO75okHm/giphy.gif)
+<!-- ![Alt Text](https://media4.giphy.com/media/kRWFIgO75okHm/giphy.gif) -->
 
 <p>
   A web app made for fun, so that people can search wrestlers, see their title reign as well as their mos memorable moments, as well as create conversations about these freaks of nature.
