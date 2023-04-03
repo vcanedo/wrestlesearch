@@ -1,0 +1,7 @@
+<% @titles.each do |title| %>
+  <div class="title">
+    <%= image_tag title.image_url, class: "title-image" %>
+    <h2><%= title.name %></h2>
+    <p><%= title.time_used %></p>
+  </div>
+<% end %>
