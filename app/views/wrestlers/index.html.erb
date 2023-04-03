@@ -1,0 +1,9 @@
+<ul>
+<% @wrestlers.each do |wrestler| %>
+  <li class="wrestler">
+    <%= image_tag wrestler.image, class: "wrestler-image" %>
+    <h2><%= wrestler.name %></h2>
+  </li>
+<% end %>
+</ul>
+
