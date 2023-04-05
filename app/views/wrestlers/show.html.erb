@@ -18,14 +18,21 @@
 
     <ul>
       <% @wrestler.reigns.each do |reign| %>
-        <li>
+        <%= link_to 'Back to gig', wrestler_reign(reign) do %>
 
-          <h4><%= reign.name %></h4>
-          <%= image_tag reign.title.image, class: "title-image" %>
-          <h5><%= reign.title.name %></h5>
-          <p><%= reign.duration %></p>
+          <li>
 
-        </li>
+            <h4><%= reign.name %></h4>
+
+            <%= image_tag reign.title.image, class: "title-image" %>
+
+            <h5><%= reign.title.name %></h5>
+
+            <p><%= reign.duration %></p>
+
+          </li>
+
+        <% end %>
       <% end %>
     </ul>
 
