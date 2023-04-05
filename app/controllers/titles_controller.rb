@@ -5,13 +5,13 @@ class TitlesController < ApplicationController
     @titles = Title.all
   end
 
-  def show; end
+  # def show; end
 
   private
 
-  def set_title
-    @title = Title.find(params[:id])
-  end
+  # def set_title
+  #   @title = Title.find(params[:id])
+  # end
 
   # def title_params
   #   params.require(:title).permit(:name, :image, :time_used)

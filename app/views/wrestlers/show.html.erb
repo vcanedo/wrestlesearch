@@ -1,0 +1,34 @@
+<div class="wrestler-show">
+
+  <div class="info">
+
+    <h2><%= @wrestler.name %></h2>
+
+    <%= image_tag @wrestler.image %>
+
+    <iframe width="420" height="315"
+    src=<%= "#{@wrestler.youtube_url}?autoplay=1&mute=1&loop=1" %>>
+    </iframe>
+
+  </div>
+
+  <% if @wrestler.reigns.present? %>
+
+    <h3>Reigns</h3>
+
+    <ul>
+      <% @wrestler.reigns.each do |reign| %>
+        <li>
+
+          <h4><%= reign.name %></h4>
+          <%= image_tag reign.title.image, class: "title-image" %>
+          <h5><%= reign.title.name %></h5>
+          <p><%= reign.duration %></p>
+
+        </li>
+      <% end %>
+    </ul>
+
+  <% end %>
+
+</div>
