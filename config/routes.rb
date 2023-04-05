@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :titles, only: %i[index show]
+  resources :titles, only: %i[index]
   resources :wrestlers, only: %i[index show] do
     resources :reigns, only: %i[show]
   end
