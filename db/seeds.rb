@@ -10,8 +10,11 @@
 require "open-uri"
 require "nokogiri"
 
+# Setting certain url to scrape
 url = "https://www.imdb.com/chart/top/?ref_=nv_mv_250"
+# Open the url and read it and setting it to a variable as html file
 html_file = URI.open(url).read
+# Parse the html file and setting it as an html doc
 html_doc = Nokogiri::HTML(html_file)
 
 # Create an array of hashes with the data
