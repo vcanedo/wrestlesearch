@@ -18,9 +18,9 @@ html_file = URI.open(url).read
 html_doc = Nokogiri::HTML(html_file)
 
 # Create an array of hashes with the data
-movies = []
+wrestlers = []
 html_doc.search(".titleColumn").each do |element|
-  movies << {
+  wrestlers << {
     title: element.search("a").text,
     year: element.search("span.secondaryInfo").text.gsub("(", "").gsub(")", ""),
     poster_url: element.search("img").attribute("src").value,
@@ -28,19 +28,47 @@ html_doc.search(".titleColumn").each do |element|
   }
 end
 
-# Create the movies
-movies.each do |movie|
-  Movie.create!(movie)
+# Create the wrestlers
+wrestlers.each do |wrestler|
+  Wrestler.create!(wrestler)
 end
+
+
 
 puts "Finished seeding!"
 
-# optional template
+#  =======================================
+
+# template for scraping news
+# https://www.wrestle.buzz/ <---!! This website can be used later to scrape wrestling news, but I need to create a news model first
+
+# create scraper for news
+# url = "https://www.wrestle.buzz/"
+# html_file = URI.open(url).read
+# html_doc = Nokogiri::HTML(html_file)
+
+# news = []
+# html_doc.search("div.post").each do |element|
+#   news << {
+#     title: element.search("h2.post-title").text.strip,
+#     date: element.search("span.post-date").text.strip,
+#     image_url: element.search("img").attribute("src").value,
+#     description: element.search("div.post-entry p").text.strip
+#   }
+# end
+
+# news.each do |news|
+#   News.create!(news)
+# end
+
+# =======================================
+
+# optional template for main scraping
 # url = "https://www.imdb.com/list/ls009668711/"
 # html_file = open(url).read
 # html_doc = Nokogiri::HTML(html_file)
 
-# # Create the movies
+# # Create the wrestlers
 # html_doc.search(".lister-item-content").each do |element|
 #   title = element.search(".lister-item-header a").text.strip
 #   year = element.search(".lister-item-year").text.strip.gsub(/[()]/, "").to_i
@@ -48,5 +76,5 @@ puts "Finished seeding!"
 #   plot = element.search(".text-muted+ p").text.strip
 #   image_url = element.search(".lister-item-image img").attribute("src").value
 
-#   Movie.create(title: title, year: year, director: director, plot: plot, image_url: image_url)
+#   Wrestler.create(title: title, year: year, director: director, plot: plot, image_url: image_url)
 # end
