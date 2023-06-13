@@ -10,30 +10,39 @@
 require "open-uri"
 require "nokogiri"
 
+# Setting up array of all wrestling promotions
+promotions = ["wwe", "aew", "roh", "njpw", "nwa", "wcw", "ecw", "tna", "wccw"]
+
 # Setting certain url to scrape
-url = "https://www.imdb.com/chart/top/?ref_=nv_mv_250"
+# ("a".."z").to_a
+urls = promotions.map do |promotion|
+  "https://www.thesmackdownhotel.com/roster/?promotion=#{promotion}&date=all-time"
+end
 # Open the url and read it and setting it to a variable as html file
-html_file = URI.open(url).read
+wrestlers = []
+html_files = urls.map do |url|
+  URI.open(url).read
+end
 # Parse the html file and setting it as an html doc
-html_doc = Nokogiri::HTML(html_file)
+html_doc = html_files.map do |html_file|
+  Nokogiri::HTML(html_file)
+end
 
 # Create an array of hashes with the data
-wrestlers = []
-html_doc.search(".titleColumn").each do |element|
-  wrestlers << {
-    title: element.search("a").text,
-    year: element.search("span.secondaryInfo").text.gsub("(", "").gsub(")", ""),
-    poster_url: element.search("img").attribute("src").value,
-    ranking: element.text.strip.match(/(?<=\n)\d+(?=.)/).to_s.to_i
-  }
+html_doc.each do |doc|
+  doc.search(".roster").each do |element|
+    wrestlers << {
+      name: element.search(".roster_name").text.strip,
+      image: element.search(".jch-lazyloaded").attribute("src").value # ,
+      # youtube_url: element.search(".wrestler-img").attribute("data-youtube").value
+    }
+  end
 end
 
 # Create the wrestlers
 wrestlers.each do |wrestler|
   Wrestler.create!(wrestler)
 end
-
-
 
 puts "Finished seeding!"
 
