@@ -10,8 +10,12 @@
 require "open-uri"
 require "nokogiri"
 
+# Setting up array of all wrestling promotions
+promotions = ["wwe", "aew", "roh", "njpw", "nwa", "wcw", "ecw", "tna", "wccw"]
+
 # Setting certain url to scrape
-url = "https://www.imdb.com/chart/top/?ref_=nv_mv_250"
+# ("a".."z").to_a
+url = "https://www.thesmackdownhotel.com/roster/?promotion=wwe&date=all-time"
 # Open the url and read it and setting it to a variable as html file
 html_file = URI.open(url).read
 # Parse the html file and setting it as an html doc
