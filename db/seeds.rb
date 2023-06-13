@@ -15,14 +15,16 @@ promotions = ["wwe", "aew", "roh", "njpw", "nwa", "wcw", "ecw", "tna", "wccw"]
 
 # Setting certain url to scrape
 # ("a".."z").to_a
-url = "https://www.thesmackdownhotel.com/roster/?promotion=#{promotions}&date=all-time"
+url = promotions.map do |promotion|
+  "https://www.thesmackdownhotel.com/roster/?promotion=#{promotion}&date=all-time"
+end
 # Open the url and read it and setting it to a variable as html file
+wrestlers = []
 html_file = URI.open(url).read
 # Parse the html file and setting it as an html doc
 html_doc = Nokogiri::HTML(html_file)
 
 # Create an array of hashes with the data
-wrestlers = []
 html_doc.search(".titleColumn").each do |element|
   wrestlers << {
     title: element.search("a").text,
